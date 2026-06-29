@@ -473,6 +473,16 @@ pe_parser.cpp
 [KRNL] [success] remote thread created (TID: ...)
 [KRNL] [success] injection completed
 ```
+---
+
+## Images
+
+<img width="844" height="851" alt="image" src="https://github.com/user-attachments/assets/99084a87-7df8-4c09-9ab5-3af4de342673" />
+<img width="841" height="566" alt="image" src="https://github.com/user-attachments/assets/6b587616-393f-47b9-acfc-96edac573193" />
+<img width="979" height="508" alt="image" src="https://github.com/user-attachments/assets/70991322-63a1-4880-be46-39e784e50087" />
+<img width="655" height="288" alt="image" src="https://github.com/user-attachments/assets/b35e31ec-4d4b-4441-ae70-ffff6fd9f3ca" />
+<img width="975" height="508" alt="image" src="https://github.com/user-attachments/assets/8844ed28-43db-4046-9f9c-14a0127ec13e" />
+
 
 ---
 

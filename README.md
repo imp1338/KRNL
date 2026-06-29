@@ -478,10 +478,16 @@ pe_parser.cpp
 ## Images
 
 <img width="844" height="851" alt="image" src="https://github.com/user-attachments/assets/99084a87-7df8-4c09-9ab5-3af4de342673" />
+
 <img width="841" height="566" alt="image" src="https://github.com/user-attachments/assets/6b587616-393f-47b9-acfc-96edac573193" />
+
 <img width="979" height="508" alt="image" src="https://github.com/user-attachments/assets/70991322-63a1-4880-be46-39e784e50087" />
+
 <img width="655" height="288" alt="image" src="https://github.com/user-attachments/assets/b35e31ec-4d4b-4441-ae70-ffff6fd9f3ca" />
+
 <img width="975" height="508" alt="image" src="https://github.com/user-attachments/assets/8844ed28-43db-4046-9f9c-14a0127ec13e" />
+
+<img width="616" height="274" alt="image" src="https://github.com/user-attachments/assets/978f7b24-436b-49c1-a6ec-1dc86fa2ae2f" />
 
 
 ---

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{44B04E1A-0F51-282C-9A79-1B5D1D764851}</ProjectGuid>
+    <TemplateGuid>{1bc93793-694f-48fe-9372-81e2b05556fd}</TemplateGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration>Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x64</Platform>
+    <RootNamespace>KRNLLiterally</RootNamespace>
+    <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>KMDF</DriverType>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>KMDF</DriverType>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <Driver_SpectreMitigation>false</Driver_SpectreMitigation>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <OutDir>..\build</OutDir>
+    <TargetName>krnl</TargetName>
+    <EnableInf2cat>false</EnableInf2cat>
+    <IntDir>..\build\bin</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DriverSign>
+      <FileDigestAlgorithm>sha256</FileDigestAlgorithm>
+    </DriverSign>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DriverSign>
+      <FileDigestAlgorithm>sha256</FileDigestAlgorithm>
+    </DriverSign>
+    <ClCompile>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EntryPointSymbol>entrypoint</EntryPointSymbol>
+    </Link>
+    <PreBuildEvent>
+      <Message>github.com/imp1338</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <!-- SOURCE FILES -->
+  <ItemGroup>
+    <!-- Root -->
+    <ClCompile Include="entrypoint.cpp" />
+    <!-- Core -->
+    <ClCompile Include="Source\core\driver.cpp" />
+    <!-- Communication -->
+    <ClCompile Include="Source\communication\device.cpp" />
+    <ClCompile Include="Source\communication\ioctl.cpp" />
+    <!-- Validation -->
+    <ClCompile Include="Source\validation\key_validator.cpp" />
+    <ClCompile Include="Source\validation\event_mgr.cpp" />
+    <!-- Injection -->
+    <ClCompile Include="Source\injection\proc\procmgr.cpp" />
+    <ClCompile Include="Source\injection\mem\memalloc.cpp" />
+    <ClCompile Include="Source\injection\shell\shell_inj.cpp" />
+    <ClCompile Include="Source\injection\pe\pe_parser.cpp" />
+    <ClCompile Include="Source\injection\stub\inj_stub.cpp" />
+    <!-- Payload -->
+    <ClCompile Include="Source\payload\shellcode.cpp" />
+  </ItemGroup>
+  <!-- HEADER FILES -->
+  <ItemGroup>
+    <!-- Core -->
+    <ClInclude Include="Source\core\driver.h" />
+    <!-- Communication -->
+    <ClInclude Include="Source\communication\device.h" />
+    <ClInclude Include="Source\communication\ioctl.h" />
+    <!-- Validation -->
+    <ClInclude Include="Source\validation\key_validator.h" />
+    <ClInclude Include="Source\validation\event_mgr.h" />
+    <!-- Injection -->
+    <ClInclude Include="Source\injection\proc\procmgr.h" />
+    <ClInclude Include="Source\injection\mem\memalloc.h" />
+    <ClInclude Include="Source\injection\shell\shell_inj.h" />
+    <ClInclude Include="Source\injection\pe\pe_parser.h" />
+    <ClInclude Include="Source\injection\stub\inj_stub.h" />
+    <!-- Payload -->
+    <ClInclude Include="Source\payload\shellcode.h" />
+    <!-- Common -->
+    <ClInclude Include="Source\common\definitions.h" />
+    <ClInclude Include="Source\common\types.h" />
+    <ClInclude Include="Source\common\logging.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="Includes\KRNLLiterally.inf" />
+  </ItemGroup>
+  <ItemGroup>
+    <FilesToPackage Include="$(TargetPath)" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
